@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Samyutha 🎂</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0015;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── STARS ── */
+        #stars-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ── FIREWORKS ── */
+        #fireworks-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ── BALLOONS ── */
+        .balloon-wrap {
+            position: fixed;
+            bottom: -160px;
+            z-index: 2;
+            pointer-events: none;
+            animation: floatUp linear infinite;
+        }
+
+        .balloon {
+            width: 60px;
+            height: 75px;
+            border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+            position: relative;
+            box-shadow: inset -6px -6px 14px rgba(0, 0, 0, .3);
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, .5);
+        }
+
+        @keyframes floatUp {
+            0% {
+                bottom: -160px;
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 110vh;
+                opacity: 0;
+            }
+        }
+
+        /* ── MAIN CARD ── */
+        .card {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            width: 90%;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .15);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 32px;
+            padding: 60px 50px 50px;
+            text-align: center;
+            box-shadow: 0 0 80px rgba(200, 100, 255, .25), 0 0 160px rgba(100, 150, 255, .1);
+            animation: cardPop .9s cubic-bezier(.34, 1.56, .64, 1) both;
+        }
+
+        @keyframes cardPop {
+            from {
+                opacity: 0;
+                transform: scale(.7) translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ── CAKE EMOJI ── */
+        .cake {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 10px;
+            animation: cakeBounce 1.6s ease-in-out infinite;
+            filter: drop-shadow(0 0 18px rgba(255, 180, 0, .7));
+        }
+
+        @keyframes cakeBounce {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-14px) scale(1.05);
+            }
+        }
+
+        /* ── HEADING ── */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            background: linear-gradient(135deg, #ff90e8, #b06aff, #6aadff, #ff90e8);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradShift 4s linear infinite;
+            line-height: 1.15;
+            margin-bottom: 6px;
+        }
+
+        @keyframes gradShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .subtitle {
+            font-size: .95rem;
+            color: rgba(255, 255, 255, .55);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .divider span {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .3), transparent);
+        }
+
+        /* ── MESSAGE ── */
+        .message {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, .82);
+            margin-bottom: 38px;
+        }
+
+        .message strong {
+            color: #ffb6ff;
+            font-weight: 600;
+        }
+
+        /* ── GLITTER WORDS ── */
+        .glitter {
+            display: inline-block;
+            background: linear-gradient(90deg, #ffe259, #ffa751, #ff6bcb, #ffe259);
+            background-size: 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glitterShift 2s linear infinite;
+            font-weight: 700;
+        }
+
+        @keyframes glitterShift {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 200%;
+            }
+        }
+
+        /* ── WISH TAGS ── */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .18);
+            color: #fff;
+            border-radius: 50px;
+            padding: 8px 22px;
+            font-size: .85rem;
+            cursor: default;
+            transition: transform .25s, background .25s;
+        }
+
+        .tag:hover {
+            transform: scale(1.12) rotate(-2deg);
+            background: rgba(200, 100, 255, .28);
+        }
+
+        /* ── BUTTON ── */
+        .btn {
+            display: inline-block;
+            padding: 16px 48px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #c850c0, #4158d0);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(200, 80, 192, .45);
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: rgba(255, 255, 255, .35);
+            transform: skewX(-20deg);
+            transition: left .5s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(200, 80, 192, .65);
+        }
+
+        .btn:hover::before {
+            left: 130%;
+        }
+
+        /* ── CONFETTI pieces ── */
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -20px;
+            z-index: 20;
+            border-radius: 2px;
+            animation: confettiFall linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            position: relative;
+            z-index: 10;
+            margin-top: 24px;
+            color: rgba(255, 255, 255, .3);
+            font-size: .78rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="stars-canvas"></canvas>
+    <canvas id="fireworks-canvas"></canvas>
+
+    <div class="card">
+        <span class="cake">🎂</span>
+        <h1>Happy Birthday,<br>Samyutha! 🎉</h1>
+        <p class="subtitle">✨ &nbsp; A Day as Special as You &nbsp; ✨</p>
+
+        <div class="divider"><span></span>🌸<span></span></div>
+
+        <p class="message">
+            <span class="glitter">Happy Birthday, dear friend! 🎉</span><br><br>
+
+            Today is a very special day because it celebrates someone who brings so much
+            <strong>happiness, love, and positivity</strong> into our lives. From the moment we met you,
+            you have been a source of joy, laughter, and endless support — and we truly feel
+            lucky to call you our friend.<br><br>
+
+            You always know how to make us smile, even on our worst days, and your
+            <strong>kindness and caring nature</strong> inspire us more than you know. We are so grateful
+            for all the beautiful memories we have created together — from fun and silly moments
+            to deep conversations that mean so much to us.<br><br>
+
+            On your birthday, we wish you <strong>all the happiness in the world</strong>, success in
+            everything you do, and all the love your heart can hold. May your dreams come true
+            and your future be filled with
+            <span class="glitter">bright opportunities, exciting adventures, and unforgettable moments.</span><br><br>
+
+            You deserve nothing but the best because you are such an
+            <strong>amazing person, inside and out.</strong> Thank you for always being there for us,
+            for understanding us, and for being such a wonderful part of our lives.<br><br>
+
+            Today, we celebrate <strong>you</strong> — your smile, your strength, and everything that
+            makes you special. Keep shining, keep smiling, and never stop being the incredible
+            person that you are, because
+            <span class="glitter">the world is a better place with you in it.</span><br><br>
+
+            Once again, <strong>Happy Birthday! �</strong><br>
+            We love you so much and we are always here for you — today and forever! 💖
+        </p>
+
+        <div class="tags">
+
+            <!-- Hidden Audio Element for Birthday Song -->
+            <audio id="bday-song" src="happy-birthday-song.mp3" preload="auto"></audio>
+
+            <button class="btn" id="celebrateBtn">🎊 Celebrate!</button>
+        </div>
+
+        <footer>Made with 💜 just for you, Samyutha</footer>
+
+        <script>
+            /* ════════════════════════════════════════════
+               STARS
+            ════════════════════════════════════════════ */
+            (function () {
+                const c = document.getElementById('stars-canvas');
+                const ctx = c.getContext('2d');
+                let stars = [];
+                function resize() { c.width = innerWidth; c.height = innerHeight; }
+                window.addEventListener('resize', resize); resize();
+                for (let i = 0; i < 220; i++) stars.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.4 + .3, o: Math.random(), d: Math.random() * .005 + .002 });
+                function draw() {
+                    ctx.clearRect(0, 0, c.width, c.height);
+                    stars.forEach(s => {
+                        s.o += s.d; if (s.o > 1 || s.o < 0) s.d *= -1;
+                        ctx.beginPath();
+                        ctx.arc(s.x * c.width, s.y * c.height, s.r, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(255,255,255,${s.o})`;
+                        ctx.fill();
+                    });
+                    requestAnimationFrame(draw);
+                }
+                draw();
+            })();
+
+            /* ════════════════════════════════════════════
+               FIREWORKS
+            ════════════════════════════════════════════ */
+            (function () {
+                const c = document.getElementById('fireworks-canvas');
+                const ctx = c.getContext('2d');
+                function resize() { c.width = innerWidth; c.height = innerHeight; }
+                window.addEventListener('resize', resize); resize();
+
+                const particles = [];
+                const colors = ['#ff90e8', '#b06aff', '#6aadff', '#ffe259', '#ffa751', '#ff6bcb', '#7bffcc'];
+
+                function explode(x, y) {
+                    for (let i = 0; i < 90; i++) {
+                        const angle = (Math.PI * 2 / 90) * i;
+                        const speed = Math.random() * 5 + 2;
+                        particles.push({
+                            x, y,
+                            vx: Math.cos(angle) * speed,
+                            vy: Math.sin(angle) * speed,
+                            color: colors[Math.floor(Math.random() * colors.length)],
+                            life: 1,
+                            r: Math.random() * 3 + 1
+                        });
+                    }
+                }
+
+                function loop() {
+                    ctx.fillStyle = 'rgba(10,0,21,.18)';
+                    ctx.fillRect(0, 0, c.width, c.height);
+                    for (let i = particles.length - 1; i >= 0; i--) {
+                        const p = particles[i];
+                        p.x += p.vx; p.y += p.vy;
+                        p.vy += .08; p.vx *= .97; p.life -= .013;
+                        if (p.life <= 0) { particles.splice(i, 1); continue; }
+                        ctx.globalAlpha = p.life;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = p.color; ctx.fill();
+                    }
+                    ctx.globalAlpha = 1;
+                    requestAnimationFrame(loop);
+                }
+                loop();
+
+                // auto fireworks
+                function autoFire() {
+                    explode(Math.random() * innerWidth, Math.random() * innerHeight * .6);
+                    setTimeout(autoFire, Math.random() * 2200 + 800);
+                }
+                autoFire();
+
+                window._explode = explode;
+            })();
+
+            /* ════════════════════════════════════════════
+               BALLOONS
+            ════════════════════════════════════════════ */
+            (function () {
+                const colors = ['#ff90e8', '#b06aff', '#6aadff', '#ffe259', '#ffa751', '#7bffcc', '#ff6bcb'];
+                function launch() {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'balloon-wrap';
+                    wrap.style.left = Math.random() * 100 + 'vw';
+                    const dur = Math.random() * 8 + 9;
+                    wrap.style.animationDuration = dur + 's';
+                    wrap.style.animationDelay = '0s';
+                    const b = document.createElement('div');
+                    b.className = 'balloon';
+                    b.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    wrap.appendChild(b);
+                    document.body.appendChild(wrap);
+                    setTimeout(() => wrap.remove(), (dur + 1) * 1000);
+                    setTimeout(launch, Math.random() * 2500 + 700);
+                }
+                launch();
+            })();
+
+            /* ════════════════════════════════════════════
+               CONFETTI BURST on button
+            ════════════════════════════════════════════ */
+            document.getElementById('celebrateBtn').addEventListener('click', function () {
+                // Play birthday song
+                const song = document.getElementById('bday-song');
+                song.play().catch(e => console.log('Audio playback failed:', e));
+
+                const confColors = ['#ff90e8', '#b06aff', '#6aadff', '#ffe259', '#ffa751', '#7bffcc', '#ff6bcb', '#fff'];
+                for (let i = 0; i < 120; i++) {
+                    const el = document.createElement('div');
+                    el.className = 'confetti-piece';
+                    el.style.left = Math.random() * 100 + 'vw';
+                    el.style.background = confColors[Math.floor(Math.random() * confColors.length)];
+                    el.style.width = Math.random() * 12 + 6 + 'px';
+                    el.style.height = Math.random() * 12 + 6 + 'px';
+                    el.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+                    const dur = Math.random() * 2.5 + 2;
+                    el.style.animationDuration = dur + 's';
+                    el.style.animationDelay = Math.random() * .8 + 's';
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), (dur + 1) * 1000);
+                }
+                // Extra fireworks burst
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        window._explode(Math.random() * innerWidth, Math.random() * innerHeight * .7);
+                    }, i * 220);
+                }
+            });
+        </script>
+</body>
+
+</html>
