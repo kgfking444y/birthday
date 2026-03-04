@@ -3,127 +3,127 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday Samyutha 🎂</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>🎂 Happy Birthday, Samyuktha S!</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap"
         rel="stylesheet" />
     <style>
+        /* ═══════════════════════ RESET & ROOT ═══════════════════════ */
         *,
         *::before,
         *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #FFD200;
+            --orange: #F7971E;
+            --pink: #FF6EB4;
+            --purple: #A855F7;
+            --teal: #00D4AA;
+            --green: #00E676;
+            --dark: #04000F;
+            --card: #ffffff0d;
+            --border: #ffffff20;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             min-height: 100vh;
-            background: #0a0015;
             font-family: 'Poppins', sans-serif;
+            color: #fff;
             overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: radial-gradient(ellipse at 30% 20%, #1a0533 0%, #04000f 55%, #001233 100%);
         }
 
-        /* ── STARS ── */
-        #stars-canvas {
+        /* ═══════════════════════ CANVAS LAYERS ═══════════════════════ */
+        #star-canvas,
+        #confetti-canvas {
             position: fixed;
             inset: 0;
-            z-index: 0;
             pointer-events: none;
+            z-index: 0;
         }
 
-        /* ── FIREWORKS ── */
-        #fireworks-canvas {
+        #confetti-canvas {
+            z-index: 10;
+        }
+
+        /* ═══════════════════════ FLOATING ELEMENTS ═══════════════════ */
+        .floaters {
             position: fixed;
             inset: 0;
             z-index: 1;
             pointer-events: none;
+            overflow: hidden;
         }
 
-        /* ── BALLOONS ── */
-        .balloon-wrap {
-            position: fixed;
-            bottom: -160px;
-            z-index: 2;
-            pointer-events: none;
-            animation: floatUp linear infinite;
-        }
-
-        .balloon {
-            width: 60px;
-            height: 75px;
-            border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
-            position: relative;
-            box-shadow: inset -6px -6px 14px rgba(0, 0, 0, .3);
-        }
-
-        .balloon::after {
-            content: '';
+        .floater {
             position: absolute;
-            bottom: -28px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 30px;
-            background: rgba(255, 255, 255, .5);
+            bottom: -80px;
+            animation: floatUp var(--d) linear infinite;
         }
 
         @keyframes floatUp {
             0% {
-                bottom: -160px;
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
+                transform: translateY(0) rotate(0);
+                opacity: .9;
             }
 
             100% {
-                bottom: 110vh;
+                transform: translateY(-110vh) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* ── MAIN CARD ── */
-        .card {
-            position: relative;
-            z-index: 10;
-            max-width: 700px;
-            width: 90%;
-            background: rgba(255, 255, 255, .05);
-            border: 1px solid rgba(255, 255, 255, .15);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-radius: 32px;
-            padding: 60px 50px 50px;
+        /* ═══════════════════════ HERO SECTION ═══════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px 40px;
             text-align: center;
-            box-shadow: 0 0 80px rgba(200, 100, 255, .25), 0 0 160px rgba(100, 150, 255, .1);
-            animation: cardPop .9s cubic-bezier(.34, 1.56, .64, 1) both;
+            position: relative;
+            z-index: 2;
         }
 
-        @keyframes cardPop {
-            from {
-                opacity: 0;
-                transform: scale(.7) translateY(60px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+        /* ── RIBBON BANNER ── */
+        .ribbon {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            padding: 8px 32px;
+            border-radius: 0 0 24px 24px;
+            font-size: .75rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            box-shadow: 0 4px 24px rgba(168, 85, 247, .4);
+            white-space: nowrap;
         }
 
-        /* ── CAKE EMOJI ── */
-        .cake {
-            font-size: 80px;
+        /* ── CAKE ── */
+        .cake-scene {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+
+        .cake-emoji {
+            font-size: 8rem;
             display: block;
-            margin-bottom: 10px;
-            animation: cakeBounce 1.6s ease-in-out infinite;
-            filter: drop-shadow(0 0 18px rgba(255, 180, 0, .7));
+            animation: cakeBounce 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(255, 210, 0, .55));
         }
 
         @keyframes cakeBounce {
@@ -134,382 +134,989 @@
             }
 
             50% {
-                transform: translateY(-14px) scale(1.05);
+                transform: translateY(-16px) scale(1.05);
             }
+        }
+
+        .candles {
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 18px;
+        }
+
+        .candle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .candle:hover {
+            transform: scale(1.2);
+        }
+
+        .flame {
+            font-size: 1.4rem;
+            animation: flicker .7s ease-in-out infinite alternate;
+            transition: opacity .4s;
+        }
+
+        .flame.blown {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        @keyframes flicker {
+            from {
+                transform: scaleY(1) rotate(-3deg);
+            }
+
+            to {
+                transform: scaleY(1.15) rotate(3deg);
+            }
+        }
+
+        .wick {
+            width: 3px;
+            height: 10px;
+            background: #555;
+            border-radius: 2px;
+        }
+
+        .wax {
+            width: 16px;
+            height: 28px;
+            border-radius: 8px 8px 4px 4px;
         }
 
         /* ── HEADING ── */
         h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(2.2rem, 6vw, 3.8rem);
-            background: linear-gradient(135deg, #ff90e8, #b06aff, #6aadff, #ff90e8);
-            background-size: 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradShift 4s linear infinite;
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(2.2rem, 8vw, 4.8rem);
             line-height: 1.15;
-            margin-bottom: 6px;
-        }
-
-        @keyframes gradShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .subtitle {
-            font-size: .95rem;
-            color: rgba(255, 255, 255, .55);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 36px;
-        }
-
-        /* ── DIVIDER ── */
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 32px;
-        }
-
-        .divider span {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .3), transparent);
-        }
-
-        /* ── MESSAGE ── */
-        .message {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: rgba(255, 255, 255, .82);
-            margin-bottom: 38px;
-        }
-
-        .message strong {
-            color: #ffb6ff;
-            font-weight: 600;
-        }
-
-        /* ── GLITTER WORDS ── */
-        .glitter {
-            display: inline-block;
-            background: linear-gradient(90deg, #ffe259, #ffa751, #ff6bcb, #ffe259);
-            background-size: 200%;
+            margin: 0 0 8px;
+            background: linear-gradient(135deg, #fff 0%, var(--gold) 35%, var(--orange) 60%, var(--pink) 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: glitterShift 2s linear infinite;
+            animation: shine 3s linear infinite, slideUp .8s .2s both;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .friend-name {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(1.4rem, 5vw, 2.8rem);
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(255, 210, 0, .6);
+            animation: slideUp .8s .4s both;
+            margin-bottom: 16px;
+        }
+
+        .tagline {
+            color: rgba(255, 255, 255, .6);
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 32px;
+            animation: slideUp .8s .55s both;
+        }
+
+        /* ── BLOW BUTTON ── */
+        .blow-btn {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: #1a0533;
+            border: none;
+            border-radius: 99px;
+            padding: 16px 44px;
+            font-size: 1rem;
             font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(255, 210, 0, .35);
+            transition: transform .2s, box-shadow .2s;
+            animation: slideUp .8s .85s both;
+            margin-bottom: 16px;
         }
 
-        @keyframes glitterShift {
-            0% {
-                background-position: 0%;
-            }
-
-            100% {
-                background-position: 200%;
-            }
+        .blow-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 16px 44px rgba(255, 210, 0, .5);
         }
 
-        /* ── WISH TAGS ── */
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
+        .blow-btn:active {
+            transform: scale(.96);
+        }
+
+        .blow-btn:disabled {
+            opacity: .5;
+            cursor: default;
+            transform: none;
+        }
+
+        /* ═══════════════════════ WISH CARDS SECTION ═══════════════════ */
+        .wishes-section {
+            position: relative;
+            z-index: 2;
+            padding: 20px 24px 60px;
+        }
+
+        .section-head {
+            text-align: center;
             margin-bottom: 40px;
         }
 
-        .tag {
-            background: rgba(255, 255, 255, .08);
-            border: 1px solid rgba(255, 255, 255, .18);
-            color: #fff;
-            border-radius: 50px;
-            padding: 8px 22px;
-            font-size: .85rem;
-            cursor: default;
-            transition: transform .25s, background .25s;
+        .section-head h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(1.6rem, 5vw, 2.6rem);
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
         }
 
-        .tag:hover {
-            transform: scale(1.12) rotate(-2deg);
-            background: rgba(200, 100, 255, .28);
+        .section-head p {
+            color: rgba(255, 255, 255, .45);
+            font-size: .9rem;
         }
 
-        /* ── BUTTON ── */
-        .btn {
-            display: inline-block;
-            padding: 16px 48px;
-            border-radius: 50px;
-            background: linear-gradient(135deg, #c850c0, #4158d0);
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+
+        .wish-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 32px 26px;
+            backdrop-filter: blur(16px);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(200, 80, 192, .45);
-            transition: transform .25s, box-shadow .25s;
+            transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s;
+            cursor: pointer;
         }
 
-        .btn::before {
+        .wish-card::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 40%;
-            height: 200%;
-            background: rgba(255, 255, 255, .35);
-            transform: skewX(-20deg);
-            transition: left .5s;
+            inset: 0;
+            background: var(--grad);
+            opacity: 0;
+            transition: .4s;
         }
 
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 40px rgba(200, 80, 192, .65);
+        .wish-card:hover {
+            transform: translateY(-10px) scale(1.02);
         }
 
-        .btn:hover::before {
-            left: 130%;
+        .wish-card:hover::after {
+            opacity: 1;
         }
 
-        /* ── CONFETTI pieces ── */
-        .confetti-piece {
+        .wish-card:hover {
+            box-shadow: 0 28px 70px var(--glow);
+        }
+
+        .wish-card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .card-cat {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .12);
+            font-size: .65rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .45);
+            margin-bottom: 10px;
+        }
+
+        .wish-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .wish-card p {
+            font-size: .87rem;
+            color: rgba(255, 255, 255, .68);
+            line-height: 1.75;
+            font-style: italic;
+        }
+
+        .card-footer {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-from {
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .3);
+        }
+
+        .heart-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: .2s;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        .heart-btn:hover {
+            transform: scale(1.25);
+        }
+
+        /* ═══════════════════════ PERSONAL MESSAGE BOX ═══════════════ */
+        .msg-section {
+            position: relative;
+            z-index: 2;
+            padding: 0 24px 80px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .msg-box {
+            max-width: 700px;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(168, 85, 247, .12), rgba(255, 110, 180, .08));
+            border: 1px solid rgba(168, 85, 247, .3);
+            border-radius: 32px;
+            padding: 48px 44px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 80px rgba(168, 85, 247, .12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .msg-box::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 34px;
+            background: linear-gradient(135deg, var(--purple), var(--pink), var(--gold), var(--purple));
+            background-size: 300% 300%;
+            animation: borderAnim 5s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes borderAnim {
+            to {
+                background-position: 300% 300%;
+            }
+        }
+
+        .msg-quote {
+            font-size: 4rem;
+            margin-bottom: 8px;
+            display: block;
+            animation: cakeBounce 3s ease-in-out infinite;
+        }
+
+        .msg-box h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            background: linear-gradient(135deg, var(--gold), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .msg-box p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, .82);
+            line-height: 1.9;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .msg-sig {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            color: var(--gold);
+            opacity: .75;
+        }
+
+        /* ═══════════════════════ VIDEO SECTION ═══════════════════════ */
+        .video-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 0 24px 80px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-box {
+            max-width: 720px;
+            width: 100%;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .16);
+            border-radius: 32px;
+            padding: 40px 40px 36px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 80px rgba(168, 85, 247, .14);
+            text-align: center;
+        }
+
+        .video-box h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(1.3rem, 4vw, 1.9rem);
+            background: linear-gradient(90deg, var(--pink), var(--purple), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+        }
+
+        .video-sub {
+            color: rgba(255, 255, 255, .4);
+            font-size: .8rem;
+            margin-bottom: 24px;
+            letter-spacing: .06em;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, .35);
+            background: linear-gradient(135deg, #1a0533, #0d1b4a);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .video-placeholder {
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, .4);
+            font-size: .95rem;
+            text-align: center;
+        }
+
+        .video-placeholder span {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 12px;
+            animation: cakeBounce 2.5s ease-in-out infinite;
+        }
+
+        .video-placeholder small {
+            display: block;
+            margin-top: 8px;
+            font-size: .78rem;
+            color: rgba(255, 255, 255, .25);
+        }
+
+        /* ═══════════════════════ MUSIC START OVERLAY ═══════════════ */
+        .music-overlay {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            top: -20px;
-            z-index: 20;
-            border-radius: 2px;
-            animation: confettiFall linear forwards;
+            inset: 0;
+            z-index: 99999;
+            background: radial-gradient(ellipse at 30% 20%, #1a0533 0%, #04000f 55%, #001233 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .music-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
             pointer-events: none;
         }
 
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
+        .music-overlay-icon {
+            font-size: 5rem;
+            animation: cakeBounce 2s ease-in-out infinite;
+            margin-bottom: 24px;
+        }
+
+        .music-overlay h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            background: linear-gradient(135deg, var(--gold), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .music-overlay p {
+            color: rgba(255, 255, 255, .5);
+            font-size: .9rem;
+            margin-bottom: 32px;
+        }
+
+        .music-overlay-btn {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: #1a0533;
+            border: none;
+            border-radius: 99px;
+            padding: 18px 52px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(255, 210, 0, .4);
+            transition: transform .2s, box-shadow .2s;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .music-overlay-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 14px 44px rgba(255, 210, 0, .6);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
             }
 
-            100% {
-                transform: translateY(110vh) rotate(720deg);
-                opacity: 0;
+            50% {
+                transform: scale(1.05);
             }
         }
 
-        /* ── FOOTER ── */
+
+
+        /* ═══════════════════════ FOOTER ═══════════════════════════════ */
         footer {
-            position: relative;
-            z-index: 10;
-            margin-top: 24px;
-            color: rgba(255, 255, 255, .3);
+            text-align: center;
+            padding: 32px 24px;
+            color: rgba(255, 255, 255, .2);
             font-size: .78rem;
-            letter-spacing: 1px;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ═══════════════════════ MODAL ════════════════════════════════ */
+        .modal-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, .78);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-bg.open {
+            display: flex;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, #1a0533 0%, #0d1b4a 100%);
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 32px;
+            padding: 48px 40px;
+            max-width: 540px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: popIn .4s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(.84);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-icon {
+            font-size: 4.5rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .modal h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--gold), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 14px;
+        }
+
+        .modal p {
+            color: rgba(255, 255, 255, .78);
+            font-size: .98rem;
+            line-height: 1.85;
+            font-style: italic;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, .4);
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: .2s;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        /* ═══════════════════════ RESPONSIVE ═══════════════════════════ */
+        @media(max-width:500px) {
+            .msg-box {
+                padding: 36px 24px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <canvas id="stars-canvas"></canvas>
-    <canvas id="fireworks-canvas"></canvas>
+    <!-- Layers -->
+    <canvas id="star-canvas"></canvas>
+    <canvas id="confetti-canvas"></canvas>
+    <div class="floaters" id="floaters"></div>
 
-    <div class="card">
-        <span class="cake">🎂</span>
-        <h1>Happy Birthday,<br>Samyutha! 🎉</h1>
-        <p class="subtitle">✨ &nbsp; A Day as Special as You &nbsp; ✨</p>
+    <!-- Music Start Overlay — shown if autoplay is blocked -->
+    <div class="music-overlay" id="musicOverlay">
+        <span class="music-overlay-icon">🎂</span>
+        <h2>Happy Birthday Samyuktha S!</h2>
+        <p>Tap to start the celebration 🎵</p>
+        <button class="music-overlay-btn" id="startBtn">🎉 Tap to Celebrate!</button>
+    </div>
 
-        <div class="divider"><span></span>🌸<span></span></div>
+    <!-- Background Song — auto-plays on page load -->
+    <audio id="bgSong" src="anthem.mp3" preload="auto" loop autoplay></audio>
 
-        <p class="message">
-            <span class="glitter">Happy Birthday, dear friend! 🎉</span><br><br>
+    <!-- Ribbon -->
+    <div class="ribbon">🎉 Happy Birthday Samyuktha S 🎉</div>
 
-            Today is a very special day because it celebrates someone who brings so much
-            <strong>happiness, love, and positivity</strong> into our lives. From the moment we met you,
-            you have been a source of joy, laughter, and endless support — and we truly feel
-            lucky to call you our friend.<br><br>
+    <!-- ══════════════ HERO ══════════════ -->
+    <section class="hero">
 
-            You always know how to make us smile, even on our worst days, and your
-            <strong>kindness and caring nature</strong> inspire us more than you know. We are so grateful
-            for all the beautiful memories we have created together — from fun and silly moments
-            to deep conversations that mean so much to us.<br><br>
-
-            On your birthday, we wish you <strong>all the happiness in the world</strong>, success in
-            everything you do, and all the love your heart can hold. May your dreams come true
-            and your future be filled with
-            <span class="glitter">bright opportunities, exciting adventures, and unforgettable moments.</span><br><br>
-
-            You deserve nothing but the best because you are such an
-            <strong>amazing person, inside and out.</strong> Thank you for always being there for us,
-            for understanding us, and for being such a wonderful part of our lives.<br><br>
-
-            Today, we celebrate <strong>you</strong> — your smile, your strength, and everything that
-            makes you special. Keep shining, keep smiling, and never stop being the incredible
-            person that you are, because
-            <span class="glitter">the world is a better place with you in it.</span><br><br>
-
-            Once again, <strong>Happy Birthday! �</strong><br>
-            We love you so much and we are always here for you — today and forever! 💖
-        </p>
-
-        <div class="tags">
-
-            <!-- Hidden Audio Element for Birthday Song -->
-            <audio id="bday-song" src="happy-birthday-song.mp3" preload="auto"></audio>
-
-            <button class="btn" id="celebrateBtn">🎊 Celebrate!</button>
+        <div class="cake-scene">
+            <div class="candles" id="candles"></div>
+            <span class="cake-emoji">🎂</span>
         </div>
 
-        <footer>Made with 💜 just for you, Samyutha</footer>
+        <h1>Happy Birthday!</h1>
+        <div class="friend-name">Samyuktha S 💛</div>
+        <p class="tagline">"Having you as a friend is one of the greatest gifts life has given us."</p>
 
-        <script>
-            /* ════════════════════════════════════════════
-               STARS
-            ════════════════════════════════════════════ */
-            (function () {
-                const c = document.getElementById('stars-canvas');
-                const ctx = c.getContext('2d');
-                let stars = [];
-                function resize() { c.width = innerWidth; c.height = innerHeight; }
-                window.addEventListener('resize', resize); resize();
-                for (let i = 0; i < 220; i++) stars.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.4 + .3, o: Math.random(), d: Math.random() * .005 + .002 });
-                function draw() {
-                    ctx.clearRect(0, 0, c.width, c.height);
-                    stars.forEach(s => {
-                        s.o += s.d; if (s.o > 1 || s.o < 0) s.d *= -1;
-                        ctx.beginPath();
-                        ctx.arc(s.x * c.width, s.y * c.height, s.r, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(255,255,255,${s.o})`;
-                        ctx.fill();
-                    });
-                    requestAnimationFrame(draw);
-                }
-                draw();
-            })();
+        <button class="blow-btn" id="blowBtn" onclick="blowCandles()">
+            💨 Blow the Candles!
+        </button>
+        <p style="color:rgba(255,255,255,.35);font-size:.78rem;animation:slideUp .8s 1s both;">(Click to blow every
+            candle out 🕯️)</p>
 
-            /* ════════════════════════════════════════════
-               FIREWORKS
-            ════════════════════════════════════════════ */
-            (function () {
-                const c = document.getElementById('fireworks-canvas');
-                const ctx = c.getContext('2d');
-                function resize() { c.width = innerWidth; c.height = innerHeight; }
-                window.addEventListener('resize', resize); resize();
+    </section>
 
-                const particles = [];
-                const colors = ['#ff90e8', '#b06aff', '#6aadff', '#ffe259', '#ffa751', '#ff6bcb', '#7bffcc'];
+    <!-- ══════════════ WISH CARDS ══════════════ -->
+    <div class="wishes-section">
+        <div class="section-head">
+            <h2>💌 Wishes From the Heart</h2>
+            <p>Click any card for the full message ✨</p>
+        </div>
+        <div class="cards-grid" id="cardsGrid"></div>
+    </div>
 
-                function explode(x, y) {
-                    for (let i = 0; i < 90; i++) {
-                        const angle = (Math.PI * 2 / 90) * i;
-                        const speed = Math.random() * 5 + 2;
-                        particles.push({
-                            x, y,
-                            vx: Math.cos(angle) * speed,
-                            vy: Math.sin(angle) * speed,
-                            color: colors[Math.floor(Math.random() * colors.length)],
-                            life: 1,
-                            r: Math.random() * 3 + 1
-                        });
-                    }
-                }
+    <!-- ══════════════ PERSONAL MESSAGE ══════════════ -->
+    <div class="msg-section">
+        <div class="msg-box">
+            <span class="msg-quote">💌</span>
+            <h2>A Special Note Just for You</h2>
+            <p>
+                Happy Birthday, dear friend! 🎉
+                <br><br>
+                Today is a very special day because it celebrates someone who brings so much
+                happiness, love, and positivity into our lives. From the moment we met you,
+                you have been a source of joy, laughter, and endless support, and we truly feel
+                lucky to call you our friend.
+                <br><br>
+                You always know how to make us smile, even on our worst days, and your
+                kindness and caring nature inspire us more than you know. We are so grateful
+                for all the beautiful memories we have created together, from fun and silly moments
+                to deep conversations that mean so much to us.
+                <br><br>
+                On your birthday, we wish you all the happiness in the world, success in
+                everything you do, and all the love your heart can hold. May your dreams come true
+                and your future be filled with bright opportunities, exciting adventures, and unforgettable moments.
+                <br><br>
+                You deserve nothing but the best because you are such an
+                amazing person, inside and out. Thank you for always being there for us,
+                for understanding us, and for being such a wonderful part of our lives.
+                <br><br>
+                Today, we celebrate you — your smile, your strength, and everything that
+                makes you special. Keep shining, keep smiling, and never stop being the incredible
+                person that you are, because the world is a better place with you in it.
+                <br><br>
+                Once again, Happy Birthday! 🎂
+                <br>
+                We love you so much and we are always here for you — today and forever! 💖
+            </p>
+            <div class="msg-sig">— Your Friends, Always 💛</div>
+        </div>
+    </div>
 
-                function loop() {
-                    ctx.fillStyle = 'rgba(10,0,21,.18)';
-                    ctx.fillRect(0, 0, c.width, c.height);
-                    for (let i = particles.length - 1; i >= 0; i--) {
-                        const p = particles[i];
-                        p.x += p.vx; p.y += p.vy;
-                        p.vy += .08; p.vx *= .97; p.life -= .013;
-                        if (p.life <= 0) { particles.splice(i, 1); continue; }
-                        ctx.globalAlpha = p.life;
-                        ctx.beginPath();
-                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                        ctx.fillStyle = p.color; ctx.fill();
-                    }
-                    ctx.globalAlpha = 1;
-                    requestAnimationFrame(loop);
-                }
-                loop();
+    <!-- ══════════════ VIDEO SECTION ══════════════ -->
+    <div class="video-wrapper">
+        <div class="video-box">
+            <span
+                style="font-size:3rem;display:block;margin-bottom:10px;animation:cakeBounce 2.5s ease-in-out infinite;">🎬</span>
+            <h2>Our Memories Together</h2>
+            <p class="video-sub">A special video for our special girl 💕</p>
+            <div class="video-container">
+                <!--
+                    TO ADD YOUR VIDEO:
+                    1. Place your video file (e.g. memories.mp4) in the same folder as this HTML file
+                    2. Replace the placeholder below with:
+                       <video controls playsinline>
+                           <source src="memories.mp4" type="video/mp4">
+                       </video>
+                -->
+                <div class="video-placeholder">
+                    <span>🎥</span>
+                    Add your video here!<br>
+                    <small>Place your video file in this folder and update the code</small>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                // auto fireworks
-                function autoFire() {
-                    explode(Math.random() * innerWidth, Math.random() * innerHeight * .6);
-                    setTimeout(autoFire, Math.random() * 2200 + 800);
-                }
-                autoFire();
 
-                window._explode = explode;
-            })();
 
-            /* ════════════════════════════════════════════
-               BALLOONS
-            ════════════════════════════════════════════ */
-            (function () {
-                const colors = ['#ff90e8', '#b06aff', '#6aadff', '#ffe259', '#ffa751', '#7bffcc', '#ff6bcb'];
-                function launch() {
-                    const wrap = document.createElement('div');
-                    wrap.className = 'balloon-wrap';
-                    wrap.style.left = Math.random() * 100 + 'vw';
-                    const dur = Math.random() * 8 + 9;
-                    wrap.style.animationDuration = dur + 's';
-                    wrap.style.animationDelay = '0s';
-                    const b = document.createElement('div');
-                    b.className = 'balloon';
-                    b.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    wrap.appendChild(b);
-                    document.body.appendChild(wrap);
-                    setTimeout(() => wrap.remove(), (dur + 1) * 1000);
-                    setTimeout(launch, Math.random() * 2500 + 700);
-                }
-                launch();
-            })();
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer>Made with 💛 · For our dearest Samyuktha S</footer>
 
-            /* ════════════════════════════════════════════
-               CONFETTI BURST on button
-            ════════════════════════════════════════════ */
-            document.getElementById('celebrateBtn').addEventListener('click', function () {
-                // Play birthday song
-                const song = document.getElementById('bday-song');
-                song.play().catch(e => console.log('Audio playback failed:', e));
+    <!-- ══════════════ MODAL ══════════════ -->
+    <div class="modal-bg" id="modalBg" onclick="closeModal(event)">
+        <div class="modal">
+            <button class="modal-close" onclick="document.getElementById('modalBg').classList.remove('open')">✕</button>
+            <span class="modal-icon" id="mIcon"></span>
+            <h2 id="mTitle"></h2>
+            <p id="mText"></p>
+        </div>
+    </div>
 
-                const confColors = ['#ff90e8', '#b06aff', '#6aadff', '#ffe259', '#ffa751', '#7bffcc', '#ff6bcb', '#fff'];
-                for (let i = 0; i < 120; i++) {
-                    const el = document.createElement('div');
-                    el.className = 'confetti-piece';
-                    el.style.left = Math.random() * 100 + 'vw';
-                    el.style.background = confColors[Math.floor(Math.random() * confColors.length)];
-                    el.style.width = Math.random() * 12 + 6 + 'px';
-                    el.style.height = Math.random() * 12 + 6 + 'px';
-                    el.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
-                    const dur = Math.random() * 2.5 + 2;
-                    el.style.animationDuration = dur + 's';
-                    el.style.animationDelay = Math.random() * .8 + 's';
-                    document.body.appendChild(el);
-                    setTimeout(() => el.remove(), (dur + 1) * 1000);
-                }
-                // Extra fireworks burst
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => {
-                        window._explode(Math.random() * innerWidth, Math.random() * innerHeight * .7);
-                    }, i * 220);
-                }
+    <script>
+        /* ════════════════════════════════════════
+           0. AUTO-PLAY BACKGROUND SONG ON PAGE LOAD
+        ════════════════════════════════════════ */
+        (function () {
+            const bgSong = document.getElementById('bgSong');
+            const overlay = document.getElementById('musicOverlay');
+            bgSong.volume = 0.5;
+
+            function hideOverlay() {
+                overlay.classList.add('hidden');
+            }
+
+            // Try autoplay immediately
+            bgSong.play().then(function () {
+                // Autoplay worked! Hide overlay instantly
+                hideOverlay();
+            }).catch(function () {
+                // Autoplay blocked — show the overlay
+                overlay.style.display = 'flex';
             });
-        </script>
+
+            // Retry on page load
+            window.addEventListener('load', function () {
+                bgSong.play().then(hideOverlay).catch(function () { });
+            });
+
+            // When user taps the overlay button
+            document.getElementById('startBtn').addEventListener('click', function () {
+                bgSong.play();
+                hideOverlay();
+            });
+
+            // Also hide overlay on any tap/click (as fallback)
+            overlay.addEventListener('click', function () {
+                bgSong.play();
+                hideOverlay();
+            });
+        })();
+
+        /* ════════════════════════════════════════
+           1. STAR CANVAS
+        ════════════════════════════════════════ */
+        const sc = document.getElementById('star-canvas');
+        const sctx = sc.getContext('2d');
+        let SW, SH, stars = [];
+        function resizeStar() { SW = sc.width = innerWidth; SH = sc.height = innerHeight; initStars(); }
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < 180; i++) stars.push({
+                x: Math.random() * SW, y: Math.random() * SH,
+                r: Math.random() * 1.4 + .3,
+                vx: (Math.random() - .5) * .15, vy: (Math.random() - .5) * .15,
+            });
+        }
+        resizeStar();
+        window.addEventListener('resize', resizeStar);
+        function drawStars() {
+            sctx.clearRect(0, 0, SW, SH);
+            stars.forEach(s => {
+                s.x = (s.x + s.vx + SW) % SW; s.y = (s.y + s.vy + SH) % SH;
+                const a = .3 + .65 * Math.abs(Math.sin(Date.now() / 1200 + s.x * .02));
+                sctx.beginPath(); sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                sctx.fillStyle = `rgba(255,255,255,${a})`; sctx.fill();
+            });
+            requestAnimationFrame(drawStars);
+        }
+        drawStars();
+
+        /* ════════════════════════════════════════
+           2. CONFETTI CANNON
+        ════════════════════════════════════════ */
+        const cc = document.getElementById('confetti-canvas');
+        const cctx = cc.getContext('2d');
+        let CW, CH, particles = [];
+        function resizeC() { CW = cc.width = innerWidth; CH = cc.height = innerHeight; }
+        resizeC();
+        window.addEventListener('resize', resizeC);
+        const COLS = ['#FFD200', '#F7971E', '#FF6EB4', '#A855F7', '#00E676', '#00D4AA', '#fff'];
+        function burst(cx, cy, count) {
+            for (let i = 0; i < count; i++) {
+                const ang = Math.random() * Math.PI * 2;
+                const sp = Math.random() * 14 + 3;
+                particles.push({
+                    x: cx, y: cy, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp,
+                    g: .22, life: 1, decay: Math.random() * .007 + .005,
+                    col: COLS[Math.floor(Math.random() * COLS.length)],
+                    sz: Math.random() * 7 + 3, shape: Math.random() > .5 ? 'rect' : 'circle'
+                });
+            }
+        }
+        function drawParticles() {
+            cctx.clearRect(0, 0, CW, CH);
+            particles = particles.filter(p => p.life > 0);
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy; p.vy += p.g; p.vx *= .99; p.life -= p.decay;
+                cctx.save(); cctx.globalAlpha = p.life; cctx.fillStyle = p.col;
+                cctx.translate(p.x, p.y); cctx.rotate(p.vx * .12);
+                if (p.shape === 'rect') cctx.fillRect(-p.sz / 2, -p.sz / 2, p.sz, p.sz * .45);
+                else { cctx.beginPath(); cctx.arc(0, 0, p.sz / 2, 0, Math.PI * 2); cctx.fill(); }
+                cctx.restore();
+            });
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+        // Opening shower
+        setTimeout(() => { for (let i = 0; i < 8; i++) setTimeout(() => burst(CW / 2, CH * .35, 30), i * 180); }, 600);
+
+        /* ════════════════════════════════════════
+           3. FLOATING EMOJIS
+        ════════════════════════════════════════ */
+        const FE = ['🎈', '🎀', '⭐', '💫', '🎁', '✨', '🌟', '🎊', '💛', '🌸', '💜'];
+        const floatersEl = document.getElementById('floaters');
+        function spawnFloat() {
+            const el = document.createElement('div');
+            el.className = 'floater';
+            const dur = (Math.random() * 9 + 7).toFixed(1) + 's';
+            el.style.cssText = `left:${Math.random() * 100}%;--d:${dur};animation-delay:${(Math.random() * 3).toFixed(1)}s;font-size:${(Math.random() * 1.4 + 1).toFixed(1)}rem`;
+            el.textContent = FE[Math.floor(Math.random() * FE.length)];
+            floatersEl.appendChild(el);
+            setTimeout(() => el.remove(), (parseFloat(dur) + 4) * 1000);
+        }
+        for (let i = 0; i < 14; i++) spawnFloat();
+        setInterval(spawnFloat, 1100);
+
+        /* ════════════════════════════════════════
+           4. CANDLES
+        ════════════════════════════════════════ */
+        const CANDLE_COLORS = ['#FF6EB4', '#FFD200', '#A855F7', '#00D4AA', '#F7971E'];
+        const candesWrap = document.getElementById('candles');
+        let totalCandles = 5, blownCount = 0;
+        CANDLE_COLORS.forEach((col, i) => {
+            const c = document.createElement('div');
+            c.className = 'candle';
+            c.id = 'candle' + i;
+            c.onclick = () => blowOne(i);
+            c.innerHTML = `<span class="flame" id="flame${i}">🔥</span>
+               <div class="wick"></div>
+               <div class="wax" style="background:${col}"></div>`;
+            candesWrap.appendChild(c);
+        });
+        function blowOne(i) {
+            const flame = document.getElementById('flame' + i);
+            if (!flame.classList.contains('blown')) {
+                flame.classList.add('blown');
+                blownCount++;
+                burst(CW / 2, CH * .2, 40);
+                if (blownCount >= totalCandles) allBlown();
+            }
+        }
+        function blowCandles() {
+            CANDLE_COLORS.forEach((_, i) => blowOne(i));
+        }
+        function allBlown() {
+            document.getElementById('blowBtn').textContent = '🎉 Happy Birthday, Samyuktha S!';
+            document.getElementById('blowBtn').disabled = true;
+            for (let i = 0; i < 10; i++) setTimeout(() => burst(Math.random() * CW, Math.random() * CH * .5, 50), i * 200);
+        }
+
+        /* ════════════════════════════════════════
+           5. WISH CARDS — Friendship Theme
+        ════════════════════════════════════════ */
+        const WISHES = [
+            {
+                icon: '🫂', cat: 'friendship', title: 'Our Unbreakable Bond',
+                short: 'Our friendship is forever — no matter what.',
+                full: 'Real friendship is not about being inseparable — it is about being separated and nothing changes. No matter where life takes us, we carry you with us every single day. Thank you for being our constant, our comfort, and our forever person. Happy Birthday, Samyuktha S! 🫂💛',
+                from: 'Your friends, always',
+                grad: 'linear-gradient(135deg,rgba(0,212,170,.12),rgba(0,150,120,.06))',
+                glow: 'rgba(0,212,170,.28)'
+            },
+            {
+                icon: '💜', cat: 'friendship', title: 'A Rare Kind of Friend',
+                short: 'Friends like you are once-in-a-lifetime gifts.',
+                full: 'Not everyone is lucky enough to have a friend who truly gets them — who listens without judging, laughs without limits, and stays without conditions. We are the lucky ones. Having you as a friend is one of the greatest blessings of our lives. Happy Birthday, Samyuktha S! 🎁',
+                from: 'Your grateful friends',
+                grad: 'linear-gradient(135deg,rgba(168,85,247,.12),rgba(100,60,200,.06))',
+                glow: 'rgba(168,85,247,.28)'
+            },
+            {
+                icon: '🌸', cat: 'friendship', title: 'You Make Life Beautiful',
+                short: 'Life is simply better with you in it.',
+                full: 'You have this incredible gift of making ordinary moments feel extraordinary. A coffee chat with you feels like a celebration. A walk with you feels like an adventure. Today, on your birthday, we just want to say — thank you for making our world so much brighter, Samyuktha S. ✨',
+                from: 'With so much love, your friends',
+                grad: 'linear-gradient(135deg,rgba(255,110,180,.12),rgba(200,80,140,.06))',
+                glow: 'rgba(255,110,180,.28)'
+            },
+            {
+                icon: '💬', cat: 'friendship', title: 'Our Conversations Are Magic',
+                short: 'We could talk to you for hours and it never feels long enough.',
+                full: 'From deep 2 AM conversations to laughing over absolutely nothing — every moment with you is one we treasure. You understand us in a way few people ever do, and that is the kind of friendship stories are written about. Wishing you a birthday as magical as you are, Samyuktha S! 🌙',
+                from: 'Your favourite conversation partners',
+                grad: 'linear-gradient(135deg,rgba(255,210,0,.12),rgba(230,160,0,.06))',
+                glow: 'rgba(255,210,0,.3)'
+            },
+            {
+                icon: '🛡️', cat: 'friendship', title: 'Our Ride or Die',
+                short: 'No matter what, you always show up for us.',
+                full: 'You are the friend who shows up — not just for the celebrations, but for the messy, hard, beautiful in-between moments too. You have seen us at our worst and chosen to stay. That kind of loyalty is rare and we never take it for granted. Happy Birthday, our ride or die Samyuktha S! 💪',
+                from: 'Forever in your corner',
+                grad: 'linear-gradient(135deg,rgba(0,212,170,.12),rgba(0,200,150,.06))',
+                glow: 'rgba(0,212,170,.3)'
+            },
+            {
+                icon: '💖', cat: 'friendship', title: 'Celebrating YOU Today',
+                short: 'Today the spotlight is all yours — you deserve every bit of it.',
+                full: 'On this special day, we want you to feel exactly how much you mean to us and to everyone whose life you have touched. You give so much of yourself to the people around you. Today, it is your turn to receive all the love, all the joy, and all the happiness you deserve. Happy Birthday, dear Samyuktha S! 💛',
+                from: 'With the biggest smiles for you',
+                grad: 'linear-gradient(135deg,rgba(255,100,160,.1),rgba(200,60,130,.06))',
+                glow: 'rgba(255,100,160,.28)'
+            },
+        ];
+
+        const grid = document.getElementById('cardsGrid');
+        WISHES.forEach((w, i) => {
+            const d = document.createElement('div');
+            d.className = 'wish-card';
+            d.style.cssText = `--grad:${w.grad};--glow:${w.glow};animation:slideUp .7s ${(i * .1 + .5).toFixed(1)}s both;`;
+            d.innerHTML = `
+    <span class="card-icon">${w.icon}</span>
+    <span class="card-cat">${w.cat}</span>
+    <h3>${w.title}</h3>
+    <p>"${w.short}"</p>
+    <div class="card-footer">
+      <span class="card-from">✉ ${w.from}</span>
+      <button class="heart-btn" id="hb-${i}" onclick="toggleHeart(${i},event)">🤍</button>
+    </div>
+  `;
+            d.addEventListener('click', () => openModal(i));
+            grid.appendChild(d);
+        });
+
+        function toggleHeart(i, e) {
+            e.stopPropagation();
+            const btn = document.getElementById('hb-' + i);
+            btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+            if (btn.textContent === '❤️') burst(e.clientX, e.clientY, 24);
+        }
+
+        /* ════════════════════════════════════════
+           6. MODAL
+        ════════════════════════════════════════ */
+        function openModal(i) {
+            const w = WISHES[i];
+            document.getElementById('mIcon').textContent = w.icon;
+            document.getElementById('mTitle').textContent = w.title;
+            document.getElementById('mText').textContent = '"' + w.full + '"';
+            document.getElementById('modalBg').classList.add('open');
+        }
+        function closeModal(e) {
+            if (e.target === document.getElementById('modalBg'))
+                document.getElementById('modalBg').classList.remove('open');
+        }
+
+
+    </script>
 </body>
 
 </html>
