@@ -491,69 +491,139 @@
         }
 
         .video-box {
-            max-width: 720px;
+            max-width: 760px;
             width: 100%;
-            background: rgba(255, 255, 255, .06);
-            border: 1px solid rgba(255, 255, 255, .16);
+            position: relative;
+            padding: 4px;
             border-radius: 32px;
-            padding: 40px 40px 36px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 0 80px rgba(168, 85, 247, .14);
+            background: linear-gradient(135deg, var(--pink), var(--purple), var(--gold), var(--teal), var(--pink));
+            background-size: 400% 400%;
+            animation: videoGradientBorder 6s ease infinite;
+            box-shadow:
+                0 0 40px rgba(168, 85, 247, .3),
+                0 0 80px rgba(255, 110, 180, .15),
+                0 20px 60px rgba(0, 0, 0, .4);
+            transition: transform .4s cubic-bezier(.22, 1, .36, 1), box-shadow .4s;
+        }
+
+        .video-box:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow:
+                0 0 60px rgba(168, 85, 247, .45),
+                0 0 120px rgba(255, 110, 180, .2),
+                0 30px 80px rgba(0, 0, 0, .45);
+        }
+
+        @keyframes videoGradientBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .video-inner {
+            background: radial-gradient(ellipse at 30% 20%, #1a0533, #04000f 70%, #001233);
+            border-radius: 29px;
+            padding: 36px 32px 30px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Sparkle decorations */
+        .video-inner::before,
+        .video-inner::after {
+            content: '✦';
+            position: absolute;
+            font-size: 1.2rem;
+            color: var(--gold);
+            opacity: .5;
+            animation: videoSparkle 2.5s ease-in-out infinite alternate;
+        }
+
+        .video-inner::before {
+            top: 14px;
+            left: 18px;
+        }
+
+        .video-inner::after {
+            bottom: 14px;
+            right: 18px;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes videoSparkle {
+            0% {
+                opacity: .3;
+                transform: scale(0.8) rotate(0deg);
+            }
+
+            100% {
+                opacity: .8;
+                transform: scale(1.2) rotate(180deg);
+            }
         }
 
         .video-box h2 {
             font-family: 'Pacifico', cursive;
-            font-size: clamp(1.3rem, 4vw, 1.9rem);
-            background: linear-gradient(90deg, var(--pink), var(--purple), var(--gold));
+            font-size: clamp(1.4rem, 4vw, 2.1rem);
+            background: linear-gradient(90deg, var(--gold), var(--pink), var(--purple), var(--gold));
+            background-size: 300% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: shine 4s linear infinite;
             margin-bottom: 6px;
         }
 
         .video-sub {
-            color: rgba(255, 255, 255, .4);
-            font-size: .8rem;
-            margin-bottom: 24px;
-            letter-spacing: .06em;
+            color: rgba(255, 255, 255, .45);
+            font-size: .82rem;
+            margin-bottom: 22px;
+            letter-spacing: .08em;
         }
 
         .video-container {
             position: relative;
             width: 100%;
-            border-radius: 18px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(168, 85, 247, .35);
-            background: linear-gradient(135deg, #1a0533, #0d1b4a);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+            background: linear-gradient(135deg, #0d0020, #0a1628);
+            box-shadow:
+                inset 0 0 30px rgba(168, 85, 247, .1),
+                0 8px 32px rgba(0, 0, 0, .4);
+        }
+
+        /* Top film-strip decoration */
+        .video-container::before {
+            content: '🎬 NOW PLAYING 🎬';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 6px 0;
+            background: linear-gradient(90deg, rgba(168, 85, 247, .7), rgba(255, 110, 180, .7), rgba(255, 210, 0, .7));
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            z-index: 3;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, .4);
         }
 
         .video-container video {
             width: 100%;
             display: block;
-            border-radius: 16px;
-        }
-
-        .video-placeholder {
-            padding: 60px 20px;
-            color: rgba(255, 255, 255, .4);
-            font-size: .95rem;
-            text-align: center;
-        }
-
-        .video-placeholder span {
-            font-size: 3.5rem;
-            display: block;
-            margin-bottom: 12px;
-            animation: cakeBounce 2.5s ease-in-out infinite;
-        }
-
-        .video-placeholder small {
-            display: block;
-            margin-top: 8px;
-            font-size: .78rem;
-            color: rgba(255, 255, 255, .25);
+            margin-top: 24px;
         }
 
         /* ═══════════════════════ MUSIC START OVERLAY ═══════════════ */
@@ -1178,23 +1248,16 @@
     <!-- ══════════════ VIDEO SECTION ══════════════ -->
     <div class="video-wrapper">
         <div class="video-box">
-            <span
-                style="font-size:3rem;display:block;margin-bottom:10px;animation:cakeBounce 2.5s ease-in-out infinite;">🎬</span>
-            <h2>Our Memories Together</h2>
-            <p class="video-sub">A special video for our special girl 💕</p>
-            <div class="video-container">
-                <!--
-                    TO ADD YOUR VIDEO:
-                    1. Place your video file (e.g. memories.mp4) in the same folder as this HTML file
-                    2. Replace the placeholder below with:
-                       <video controls playsinline>
-                           <source src="memories.mp4" type="video/mp4">
-                       </video>
-                -->
-                <div class="video-placeholder">
-                    <span>🎥</span>
-                    Add your video here!<br>
-                    <small>Place your video file in this folder and update the code</small>
+            <div class="video-inner">
+                <span
+                    style="font-size:3rem;display:block;margin-bottom:10px;animation:cakeBounce 2.5s ease-in-out infinite;">🎬</span>
+                <h2>Our Memories Together</h2>
+                <p class="video-sub">A special video for our special girl 💕</p>
+                <div class="video-container">
+                    <video controls playsinline loop>
+                        <source src="birthday_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
